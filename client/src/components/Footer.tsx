@@ -83,7 +83,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://github.com/phil44-lab"
+                  href="https://github.com/phil444-lab"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-accent transition-colors"
