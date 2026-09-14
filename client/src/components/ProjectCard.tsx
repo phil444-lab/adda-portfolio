@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { useState } from "react";
+import { useParallaxScale } from "@/hooks/useParallax";
 
 interface ProjectCardProps {
   title: string;
@@ -17,10 +18,12 @@ export default function ProjectCard({
   link,
 }: ProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false);
+  const cardRef = useParallaxScale({ start: "top 90%", end: "top 50%" });
 
   return (
     <div
-      className="group relative h-80 md:h-96 rounded-sm overflow-hidden border border-border hover:border-accent transition-all duration-300 cursor-pointer hover:shadow-lg hover:shadow-accent/20 animate-in fade-in slide-in-from-bottom-4 duration-500"
+      ref={cardRef}
+      className="group relative h-80 md:h-96 rounded-sm overflow-hidden border border-border hover:border-accent transition-all duration-300 cursor-pointer hover:shadow-lg hover:shadow-accent/20"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

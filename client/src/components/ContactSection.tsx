@@ -1,5 +1,6 @@
 import { Mail, Linkedin, Github, ExternalLink } from "lucide-react";
 import { useState } from "react";
+import { useParallaxFade, useParallaxSlideIn } from "@/hooks/useParallax";
 
 export default function ContactSection() {
   const [formState, setFormState] = useState({
@@ -8,6 +9,11 @@ export default function ContactSection() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+
+  // Parallax refs
+  const headerRef = useParallaxFade({ start: "top 80%", end: "top 40%" });
+  const formRef = useParallaxSlideIn<HTMLFormElement>({ direction: "left", start: "top 80%", end: "top 40%" });
+  const contactInfoRef = useParallaxSlideIn({ direction: "right", start: "top 80%", end: "top 40%" });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,7 +48,7 @@ export default function ContactSection() {
       <div className="container">
         <div className="max-w-3xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16 md:mb-24">
+          <div ref={headerRef} className="text-center mb-16 md:mb-24">
             <div className="flex items-center justify-center gap-3 mb-4">
               <div className="w-1 h-8 bg-accent rounded-full"></div>
               <span className="text-accent font-mono text-sm md:text-base">
@@ -61,7 +67,7 @@ export default function ContactSection() {
           {/* Contact Form */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
             {/* Form */}
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-semibold text-foreground mb-2">
                   Nom
@@ -119,7 +125,7 @@ export default function ContactSection() {
             </form>
 
             {/* Contact Info */}
-            <div className="space-y-8">
+            <div ref={contactInfoRef} className="space-y-8">
               <div className="space-y-6">
                 {/* Email */}
                 <div className="flex gap-4">

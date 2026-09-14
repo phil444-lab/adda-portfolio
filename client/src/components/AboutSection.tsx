@@ -1,4 +1,5 @@
 import { CheckCircle2 } from "lucide-react";
+import { useParallaxFade } from "@/hooks/useParallax";
 
 const skills = [
   { category: "Frontend", items: ["React TypeScript", "Tailwind CSS", "Vue.js"] },
@@ -8,12 +9,15 @@ const skills = [
 ];
 
 export default function AboutSection() {
+  const leftColumnRef = useParallaxFade({ start: "top 80%", end: "top 40%" });
+  const rightColumnRef = useParallaxFade({ start: "top 85%", end: "top 45%" });
+
   return (
     <section id="about" className="py-20 md:py-32 bg-background">
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
           {/* Left Column - Content */}
-          <div className="space-y-8">
+          <div ref={leftColumnRef} className="space-y-8">
             {/* Section Header */}
             <div>
               <div className="flex items-center gap-3 mb-4">
@@ -52,7 +56,7 @@ export default function AboutSection() {
           </div>
 
           {/* Right Column - Skills */}
-          <div className="space-y-8">
+          <div ref={rightColumnRef} className="space-y-8">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-1 h-8 bg-accent rounded-full"></div>
               <span className="text-accent font-mono text-sm md:text-base">

@@ -203,10 +203,35 @@ function vitePluginStorageProxy(): Plugin {
   };
 }
 
-const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()];
+// Exclut le dossier d'outillage Manus du build de production (copié tel quel
+// depuis client/public, inutile sur un site public).
+function vitePluginExcludeManusPublic(): Plugin {
+  return {
+    name: "exclude-manus-public",
+    apply: "build",
+    closeBundle() {
+      try {
+        fs.rmSync(path.join(import.meta.dirname, "dist", "public", "__manus__"), { recursive: true, force: true });
+      } catch {
+        /* ignore */
+      }
+    },
+  };
+}
 
-export default defineConfig({
-  plugins,
+// Plugins Manus (debug/live-edit) : uniquement en dev ("serve"), jamais dans le
+// build de production ("build") — le runtime Manus ne doit pas être déployé.
+function createPlugins(command: "build" | "serve"): Plugin[] {
+  const manusPlugins: Plugin[] =
+    command === "serve"
+      ? [jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()]
+      : [vitePluginExcludeManusPublic()];
+
+  return [react(), tailwindcss(), ...manusPlugins];
+}
+
+export default defineConfig(({ command }) => ({
+  plugins: createPlugins(command),
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "client", "src"),
@@ -241,4 +266,4 @@ export default defineConfig({
       deny: ["**/.*"],
     },
   },
-});
+}));

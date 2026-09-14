@@ -1,4 +1,5 @@
 import { Download } from "lucide-react";
+import { useParallaxFade } from "@/hooks/useParallax";
 
 const publications = [
   {
@@ -49,11 +50,13 @@ const publications = [
 ];
 
 export default function PublicationsSection() {
+  const headerRef = useParallaxFade({ start: "top 80%", end: "top 40%" });
+
   return (
     <section id="publications" className="py-20 md:py-32 bg-secondary/50">
       <div className="container">
         {/* Section Header */}
-        <div className="mb-16 md:mb-24">
+        <div ref={headerRef} className="mb-16 md:mb-24">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-1 h-8 bg-accent rounded-full"></div>
             <span className="text-accent font-mono text-sm md:text-base">

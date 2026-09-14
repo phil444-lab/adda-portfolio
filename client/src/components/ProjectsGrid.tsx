@@ -1,4 +1,5 @@
 import ProjectCard from "./ProjectCard";
+import { useParallaxFade } from "@/hooks/useParallax";
 
 const projects = [
   // {
@@ -64,11 +65,14 @@ const projects = [
 ];
 
 export default function ProjectsGrid() {
+  const headerRef = useParallaxFade({ start: "top 80%", end: "top 40%" });
+  const gridRef = useParallaxFade({ start: "top 90%", end: "top 50%" });
+
   return (
     <section id="projects" className="py-20 md:py-32 bg-background">
       <div className="container">
         {/* Section Header */}
-        <div className="mb-16 md:mb-24">
+        <div ref={headerRef} className="mb-16 md:mb-24">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-1 h-8 bg-accent rounded-full"></div>
             <span className="text-accent font-mono text-sm md:text-base">
@@ -81,7 +85,7 @@ export default function ProjectsGrid() {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {projects.map((project) => (
             <ProjectCard key={project.id} {...project} />
           ))}

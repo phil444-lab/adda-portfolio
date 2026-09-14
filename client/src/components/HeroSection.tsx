@@ -1,11 +1,15 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "wouter";
+import { useParallax, useParallaxFade } from "@/hooks/useParallax";
 
 export default function HeroSection() {
+  const parallaxBgRef = useParallax({ speed: 0.3 });
+  const parallaxContentRef = useParallaxFade({ start: "top 80%", end: "top 30%" });
+
   return (
     <section className="relative w-full h-screen md:h-[90vh] flex items-center justify-center overflow-hidden pt-20 md:pt-0">
       {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0">
+      <div ref={parallaxBgRef} className="absolute inset-0 z-0 scale-110">
         <img
           src="https://d2xsxph8kpxj0f.cloudfront.net/310519663606349216/epWo8NJ5RLjmrJQkvqcuhb/hero-tech-dark-BE8dTSnhMsu5qAmx9MkTTE.webp"
           alt="Technology background"
@@ -15,7 +19,7 @@ export default function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="container relative z-10 flex flex-col gap-6 md:gap-8 max-w-2xl animate-in fade-in slide-in-from-bottom-4 duration-1000">
+      <div ref={parallaxContentRef} className="container relative z-10 flex flex-col gap-6 md:gap-8 max-w-2xl">
         {/* Accent Line */}
         <div className="flex items-center gap-3 animate-in fade-in slide-in-from-left-4 duration-700 delay-100">
           <div className="w-1 h-12 bg-accent rounded-full"></div>
