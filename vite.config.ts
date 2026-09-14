@@ -3,7 +3,7 @@ import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import fs from "node:fs";
 import path from "node:path";
-import { defineConfig, type Plugin, type ViteDevServer } from "vite";
+import { defineConfig, type Plugin, type PluginOption, type ViteDevServer } from "vite";
 import { vitePluginManusRuntime } from "vite-plugin-manus-runtime";
 
 // =============================================================================
@@ -221,8 +221,8 @@ function vitePluginExcludeManusPublic(): Plugin {
 
 // Plugins Manus (debug/live-edit) : uniquement en dev ("serve"), jamais dans le
 // build de production ("build") — le runtime Manus ne doit pas être déployé.
-function createPlugins(command: "build" | "serve"): Plugin[] {
-  const manusPlugins: Plugin[] =
+function createPlugins(command: "build" | "serve"): PluginOption[] {
+  const manusPlugins: PluginOption[] =
     command === "serve"
       ? [jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()]
       : [vitePluginExcludeManusPublic()];
