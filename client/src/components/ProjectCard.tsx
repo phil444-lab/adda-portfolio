@@ -49,6 +49,13 @@ export default function ProjectCard({
       {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
 
+      {/* Couche de flou au survol : améliore la lisibilité des textes */}
+      <div
+        className={`absolute inset-0 backdrop-blur-md bg-background/20 transition-opacity duration-300 ${
+          isHovered ? "opacity-100" : "opacity-0"
+        }`}
+      ></div>
+
       {/* Content */}
       <div className="absolute inset-0 flex flex-col justify-between p-6 md:p-8">
         {/* Top Section - Initially Hidden, Shows on Hover */}
