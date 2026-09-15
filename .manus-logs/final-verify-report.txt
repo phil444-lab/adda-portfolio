@@ -1,0 +1,8 @@
+﻿woff2 dans dist/public/fonts: 12
+CSS buildÃ©: index-Cy3BhV_r.css
+@font-face dans CSS: 12
+refs /fonts/ dans CSS: 12
+font-family:Plus Jakarta Sans: 6
+font-family:DM Sans: 5
+font-family:JetBrains Mono: 4
+fonts.googleapis dans HTML buildÃ©: 0
