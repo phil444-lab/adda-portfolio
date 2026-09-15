@@ -2,16 +2,16 @@ import ProjectCard from "./ProjectCard";
 import { useParallaxFade } from "@/hooks/useParallax";
 
 const projects = [
-  // {
-  //   id: 1,
-  //   title: "Plateforme E-Commerce Sécurisée",
-  //   description:
-  //     "Application web full-stack avec authentification OAuth2, paiement Stripe et chiffrement des données sensibles.",
-  //   tags: ["React", "Node.js", "Security", "Web"],
-  //   image:
-  //     "https://d2xsxph8kpxj0f.cloudfront.net/310519663606349216/epWo8NJ5RLjmrJQkvqcuhb/web-mobile-dev-RwqbveceZHmZWomdC6nGYy.webp",
-  //   link: "/projects/ecommerce",
-  // },
+  {
+    id: 1,
+    title: "Plateforme de marketplace KIVOO",
+    description:
+      "Que vous soyez un acheteur à la recherche des meilleures offres ou un vendeur souhaitant développer votre activité digitale, KIVOO centralise vos échanges au sein d'une plateforme unique, simple et sécurisée. Explorez, achetez et vendez en toute confiance !",
+    tags: ["React", "Node.js", "Security", "Web"],
+    image:
+      "https://d2xsxph8kpxj0f.cloudfront.net/310519663606349216/epWo8NJ5RLjmrJQkvqcuhb/web-mobile-dev-RwqbveceZHmZWomdC6nGYy.webp",
+    link: "https://kivoo-web.vercel.app/",
+  },
   {
     id: 2,
     title: "Application Mobile Spodoptera Detection",
