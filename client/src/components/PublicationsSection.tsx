@@ -114,14 +114,14 @@ export default function PublicationsSection() {
         </div>
 
         {/* View All Publications */}
-        <div className="flex justify-center mt-16 md:mt-24">
+        {/* <div className="flex justify-center mt-16 md:mt-24">
           <a
             href="#"
             className="px-8 py-3 border border-accent text-accent rounded-sm hover:bg-accent hover:text-accent-foreground transition-colors font-semibold"
           >
             Voir toutes les publications
           </a>
-        </div>
+        </div> */}
       </div>
     </section>
   );
