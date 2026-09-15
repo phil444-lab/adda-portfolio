@@ -17,7 +17,7 @@ const projects: Project[] = [
     title: "Plateforme de marketplace KIVOO",
     description:
       "KIVOO est la plateforme qui permet aux professionnels du Bénin d'exposer leurs services et aux utilisateurs de trouver rapidement tous les prestataires dont ils ont besoin.",
-    tags: ["React", "Node", "Web&Mobile"],
+    tags: ["FlutterWeb", "Node", "PWA"],
     image: "/images/kivoo-icon.png",
     link: "https://kivoo-web.vercel.app/",
     fit: "contain",
