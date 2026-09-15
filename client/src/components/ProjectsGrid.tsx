@@ -1,16 +1,26 @@
 import ProjectCard from "./ProjectCard";
 import { useParallaxFade } from "@/hooks/useParallax";
 
-const projects = [
+type Project = {
+  id: number;
+  title: string;
+  description: string;
+  tags: string[];
+  image: string;
+  link?: string;
+  fit?: "cover" | "contain";
+};
+
+const projects: Project[] = [
   {
     id: 1,
     title: "Plateforme de marketplace KIVOO",
     description:
-      "Que vous soyez un acheteur à la recherche des meilleures offres ou un vendeur souhaitant développer votre activité digitale, KIVOO centralise vos échanges au sein d'une plateforme unique, simple et sécurisée. Explorez, achetez et vendez en toute confiance !",
-    tags: ["React", "Node.js", "Security", "Web"],
-    image:
-      "https://d2xsxph8kpxj0f.cloudfront.net/310519663606349216/epWo8NJ5RLjmrJQkvqcuhb/web-mobile-dev-RwqbveceZHmZWomdC6nGYy.webp",
+      "KIVOO est la plateforme qui permet aux professionnels du Bénin d'exposer leurs services et aux utilisateurs de trouver rapidement tous les prestataires dont ils ont besoin.",
+    tags: ["React", "Node", "Web&Mobile"],
+    image: "/images/kivoo-icon.png",
     link: "https://kivoo-web.vercel.app/",
+    fit: "contain",
   },
   {
     id: 2,
@@ -18,9 +28,9 @@ const projects = [
     description:
       "Application Android pour analyser des images pour détecter la présence de Spodoptera frugiperda, un ravageur agricole.",
     tags: ["Flutter", "Mobile", "IA"],
-    image:
-      "https://d2xsxph8kpxj0f.cloudfront.net/310519663606349216/epWo8NJ5RLjmrJQkvqcuhb/web-mobile-dev-RwqbveceZHmZWomdC6nGYy.webp",
+    image: "/images/vermiscan-icon.png",
     link: "https://play.google.com/store/apps/details?id=com.fpfservices.vermiscan&hl=fr",
+    fit: "contain",
   },
   // {
   //   id: 3,
@@ -89,16 +99,6 @@ export default function ProjectsGrid() {
           {projects.map((project) => (
             <ProjectCard key={project.id} {...project} />
           ))}
-        </div>
-
-        {/* View All Button */}
-        <div className="flex justify-center mt-16 md:mt-24">
-          <a
-            href="#"
-            className="px-8 py-3 border border-accent text-accent rounded-sm hover:bg-accent hover:text-accent-foreground transition-colors font-semibold"
-          >
-            Voir tous les projets
-          </a>
         </div>
       </div>
     </section>

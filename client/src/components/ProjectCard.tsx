@@ -8,6 +8,7 @@ interface ProjectCardProps {
   tags: string[];
   image: string;
   link?: string;
+  fit?: "cover" | "contain";
 }
 
 export default function ProjectCard({
@@ -16,6 +17,7 @@ export default function ProjectCard({
   tags,
   image,
   link,
+  fit = "cover",
 }: ProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const cardRef = useParallaxScale({ start: "top 90%", end: "top 50%" });
@@ -27,12 +29,22 @@ export default function ProjectCard({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Background Image */}
-      <img
-        src={image}
-        alt={title}
-        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-      />
+      {/* Background Image (cover) ou Icône du projet (contain, centrée) */}
+      {fit === "contain" ? (
+        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-accent/10 via-background/60 to-background">
+          <img
+            src={image}
+            alt={title}
+            className="w-32 h-32 md:w-40 md:h-40 object-contain rounded-2xl shadow-lg shadow-accent/20 ring-1 ring-accent/20 transition-transform duration-500 group-hover:scale-105"
+          />
+        </div>
+      ) : (
+        <img
+          src={image}
+          alt={title}
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+      )}
 
       {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
