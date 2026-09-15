@@ -35,7 +35,7 @@ export default function ProjectCard({
           <img
             src={image}
             alt={title}
-            className="w-32 h-32 md:w-40 md:h-40 object-contain rounded-2xl shadow-lg shadow-accent/20 ring-1 ring-accent/20 transition-transform duration-500 group-hover:scale-105"
+            className="w-32 h-32 md:w-40 md:h-40 object-contain rounded-2xl shadow-lg shadow-accent/20 transition-transform duration-500 group-hover:scale-105"
           />
         </div>
       ) : (
@@ -76,13 +76,15 @@ export default function ProjectCard({
               {title}
             </h3>
             <p
-              className={`text-muted-foreground text-sm md:text-base transition-all duration-300 ${
+              className={`grid transition-all duration-300 ${
                 isHovered
-                  ? "opacity-100 max-h-20 translate-y-0"
-                  : "opacity-0 max-h-0 -translate-y-2"
+                  ? "grid-rows-[1fr] opacity-100 translate-y-0"
+                  : "grid-rows-[0fr] opacity-0 -translate-y-2"
               }`}
             >
-              {description}
+              <span className="min-h-0 overflow-hidden text-muted-foreground text-sm md:text-base">
+                {description}
+              </span>
             </p>
           </div>
 
